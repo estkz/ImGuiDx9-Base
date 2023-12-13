@@ -1,3 +1,9 @@
+/*
+   This header file provides example data for ImGui components and variables.
+   It includes namespaces for various components such as buttons, checkboxes, sliders, color pickers, radio buttons, and more.
+   Modify the values and add or remove components as needed for your ImGui application.
+*/
+
 #pragma once
 #include <array>
 #include "../imgui/imgui.h"

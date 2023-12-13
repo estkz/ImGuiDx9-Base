@@ -1,3 +1,4 @@
+// GUI Function Includes
 #include "menu/gui.h"
 
 // Miscellaneous Related Includes
@@ -16,7 +17,7 @@ int __stdcall wWinMain(HINSTANCE instance, HINSTANCE previousInstance, PWSTR arg
 		gui::Render();
 		gui::EndRender();
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(10));
+		std::this_thread::sleep_for(std::chrono::milliseconds(10)); // This line significantly reduces CPU usage; removing it is not recommended.
 	}
 
 	gui::DestroyImGui();

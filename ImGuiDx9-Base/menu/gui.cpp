@@ -1,6 +1,8 @@
+// Menu Related Includes
 #include "../menu/gui.h"
 #include "../menu/components.h"
 
+// ImGui DirectX9 Related Includes
 #include "../imgui/imgui_impl_dx9.h"
 #include "../imgui/imgui_impl_win32.h"
 #include "../imgui/imgui_internal.h"
@@ -12,11 +14,14 @@
 #pragma comment (lib, "d3d9.lib")
 #pragma comment (lib, "d3dx9.lib")
 
+// Miscellaneous Related Includes
 #include <string>
 
+// Here I store the width and height of our mnonitor in screenWidth and screenHeight
 int screenWidth = GetSystemMetrics(SM_CXSCREEN);
 int screenHeight = GetSystemMetrics(SM_CYSCREEN);
 
+// To center the menu on the screen, we subtract the width and height of our monitor with the width and height of our menu. We then divide both with 2 and store windowX and windowY
 int windowX = (screenWidth - gui::WIDTH) / 2;
 int windowY = (screenHeight - gui::HEIGHT) / 2;
 
@@ -43,7 +48,7 @@ long __stdcall WindowProcess(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 	case WM_SYSCOMMAND:
 	{
-		if ((wParam & 0xfff0) == SC_KEYMENU)
+		if ((wParam & 0xfff0) == SC_KEYMENU) // Disable ALT application menu
 			return 0;
 	} break;
 
@@ -58,7 +63,7 @@ long __stdcall WindowProcess(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 	case WM_LBUTTONDOWN:
 	{
-		gui::position = MAKEPOINTS(lParam);
+		gui::position = MAKEPOINTS(lParam); // Update the position variable with the coordinates where a click occurs.
 	} return 0;
 
 
@@ -346,7 +351,6 @@ void gui::Render() noexcept
 		Similarly, for flags, e.g., 'ImGuiColorEditFlags_', will provide a list of options specifically for the Color Editor. For a comprehensive guide on everything ImGui has to
 		offer, I highly recommend checking out the 'imgui_demo' example. It provides an extensive overview and can be found in the ImGui repository: https://github.com/ocornut/imgui/blob/master/imgui_demo.cpp
 	*/
-
 
 	ImGui::End();
 }
